@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="demo">
+		{{ fullName }}
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#demo',
+			data: {
+				firstName: "loki",
+				lastName: "song",
+				// fullName: "loki song"
+			},
+			// watch: {
+			// 	firstName: function(val) {
+			// 		this.fullName = val + ' ' +this.lastName;
+			// 	},
+			// 	lastName: function(val) {
+			// 		this.fullName = this.firstName + ' ' + val;
+			// 	}
+			// }
+			computed: {
+				fullName: {
+					// return this.firstName + ' ' + this.lastName;
+					get: function() {
+						return this.firstName + ' ' + this.lastName;
+					},
+					set: function(newValue) {
+						var newName = newValue.split(' ');
+						this.firstName = newName[0];
+						this.lastName = newName[newName.length - 1];
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>
