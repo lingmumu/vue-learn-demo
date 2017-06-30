@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template v-if="loginType === 'userName'">
+            <label>userName</label>
+            <input placeholder="userName" key="username-input">
+        </template>
+        <template v-else>
+            <label>email address</label>
+            <input placeholder="email address" key="email-input">
+        </template>
+        <button v-on:click="toggle">toggleType</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                loginType: 'userName'
+            },
+            methods: {
+                toggle: function () {
+//                    if (this.loginType === 'userName') {
+//                        this.loginType = 'email';
+//                    } else {
+//                        this.loginType = 'userName';
+//                    }
+                    this.loginType = this.loginType === 'userName' ? 'email' : 'userName';
+                }
+            }
+        })
+    </script>
+</body>
+</html>
